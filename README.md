@@ -35,15 +35,15 @@ facemask.video_mask("inputfile.avi","outputfile.avi",mask_img_array)#default dim
 
 - Mask Image Used:
 
-[![Working Demonstration](https://github.com/nixkhil/Face-Anon/blob/master/mask.jpg)](https://github.com/nixkhil/Face-Anon/blob/master/mask.jpg)
+[![Working Demonstration](https://github.com/nixkhil/Face-Anonymizer-OpenCV/blob/master/mask.jpg)](https://github.com/nixkhil/Face-Anon/blob/master/mask.jpg)
 
 - Output Masked Image:
 
-[![Working Demonstration](https://github.com/nixkhil/Face-Anon/blob/master/output.jpg)](https://github.com/nixkhil/Face-Anon/blob/master/output.jpg)
+[![Working Demonstration](https://github.com/nixkhil/Face-Anonymizer-OpenCV/blob/master/output.jpg)](https://github.com/nixkhil/Face-Anon/blob/master/output.jpg)
 
 - Output Masked Video:
 
-[![Working Demonstration](https://github.com/nixkhil/Face-Anon/blob/master/output.gif)](https://github.com/nixkhil/Face-Anon/blob/master/output.gif)
+[![Working Demonstration](https://github.com/nixkhil/Face-Anonymizer-OpenCV/blob/master/output.gif)](https://github.com/nixkhil/Face-Anon/blob/master/output.gif)
 
 ### Important: In videos few frames might be dropped while applying the mask. Audio is lost from video files.
 
