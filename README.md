@@ -42,6 +42,7 @@ facemask.video_mask("inputfile.avi","outputfile.avi",mask_img_array)#default dim
 [![Working Demonstration](https://github.com/nixkhil/Face-Anon/blob/master/output.jpg)](https://github.com/nixkhil/Face-Anon/blob/master/output.jpg)
 
 - Output Masked Video:
+
 [![Working Demonstration](https://github.com/nixkhil/Face-Anon/blob/master/output.gif)](https://github.com/nixkhil/Face-Anon/blob/master/output.gif)
 
 ### Important: In videos few frames might be dropped while applying the mask. Audio is lost from video files.
