@@ -2,11 +2,12 @@ import numpy as np
 import cv2 as cv
 import math
 import time
-from PIL import Image
+import os
 
 def image_mask(input_img_array,mask_img_array,face_haar="haarcascade_frontalface_default.xml",eyes_haar="haarcascade_eye.xml"):
     output_image=[]
-    img = Image.fromarray(input_img_array, 'RGB')
+    img_stor = cv.imwrite("temp_img.jpg",input_img_array)
+    img=cv.imread("temp_img.jpg")
     face_cascade = cv.CascadeClassifier("haarcascade_frontalface_default.xml")
     eye_cascade = cv.CascadeClassifier("haarcascade_eye.xml")
     mask=Image.fromarray(mask_img_array, 'RGB')  
@@ -29,14 +30,16 @@ def image_mask(input_img_array,mask_img_array,face_haar="haarcascade_frontalface
         overlay_final = cv.warpAffine(mask_overlay,M,(tmp_cols,tmp_rows),cv.BORDER_CONSTANT, borderValue=(255,255,255))
         mask_gray = cv.cvtColor(overlay_final, cv.COLOR_BGR2GRAY)
         overlay(fx,fy,fw,fh,mask_gray,img,mask_overlay,output_image)
-        return np.asarray(Image.open(img))
+        os.remove("temp_img.jpg") # you can choose to keep input image
+        return np.asarray(img)
     
 def video_mask(input_file="input.avi",output_file="output.avi",mask_img_array,face_haar="haarcascade_frontalface_default.xml",eyes_haar="haarcascade_eye.xml",dimen1=848,dimen2=480):
     fourcc = cv.VideoWriter_fourcc(*'MJPG')
     out = cv.VideoWriter(output_file,fourcc, 20.0, (dimen1,dimen2))## output video file 
     face_cascade = cv.CascadeClassifier("haarcascade_frontalface_default.xml")
     eye_cascade = cv.CascadeClassifier("haarcascade_eye.xml")
-    mask=Image.fromarray(mask_img_array, 'RGB')
+    mask_stor=cv.imwrite("temp_mask.jpg",mask_img_array)
+    mask=cv.imread("temp_mask.jpg")
     cap = cv.VideoCapture(input_file) ## input video file
     while cap.isOpened():
         ret, img = cap.read()
@@ -75,4 +78,4 @@ def overlay(fx,fy,fw,fh,mask_gray,img,replacement_roi,output_file):
                 else:
                     img[fy+i][fx+j]=replacement_roi[i][j]
     
-
+os.remove("temp_mask.jpg")# you can choose to keep mask image for usage
